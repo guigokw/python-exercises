@@ -1,0 +1,50 @@
+def adicionar_numeros(numeros, adicionar):
+    numeros.append(adicionar)
+    return numeros
+
+def mostrar_numeros():
+    print(numeros)
+
+
+
+
+def remover_numeros(numeros, remover):
+        if remover in numeros:
+            numeros.remove(remover)
+            print(f'numero {remover} retirado com sucesso')
+        else:
+            print(f'numero {remover} nao encontrado')
+
+
+
+
+
+numeros = list()
+
+while True:
+
+    print('1 - adicionar numeros')
+    print('2 - mostrar numeros')
+    print('3 - remover numeros')
+    print('4 - sair do sistema')
+
+    opção = int(input('escolha uma dessas opções:'))
+
+    if opção == 1:
+        adicionar = int(input('adicione um numero:'))
+        adicionar_numeros(numeros, adicionar)
+
+    elif opção == 2:
+        mostrar_numeros()
+
+    elif opção == 3:
+        remover = int(input('remova um numero da lista:'))
+        remover_numeros(numeros, remover)
+
+
+
+    elif opção == 4:
+        break
+
+    else:
+        print('opção incorreta, digite novamente:')
