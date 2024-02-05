@@ -1,5 +1,8 @@
 # python-code-
 a beginner project in python
+
+
+
 nota1 = float(input('coloque a sua primeira nota:'))
 nota2 = float(input('coloque a segunda nota'))
 
