@@ -1,0 +1,86 @@
+class conta_bancaria:
+    def __init__(self, nome, saldo, numero_da_conta):
+        self.nome = nome
+        self.saldo = saldo
+        self.numero_da_conta = numero_da_conta
+
+
+
+
+class pessoa:
+    def __init__(self):
+        self.lista = []
+
+
+    def adicionar_conta(self, conta_bancaria):
+        self.lista.append(conta_bancaria)
+
+
+
+    def deposito(self):
+        if not self.lista:
+            print('nao existe uma conta bancaria vc precisa criar uma')
+        else:
+            numero = int(input('digite o numero da conta'))
+            depositar = float(input('quantos R$ vc deseja depositar'))
+            for conta in self.lista:
+
+                if numero == conta.numero_da_conta:
+                    print(f'depositando R${depositar} na conta')
+                    conta.saldo += depositar
+                    print(f'R${depositar} depositados agora vc tem R${conta.saldo} na conta')
+                    return
+                print('nao foi encontrado uma conta com esse numero')
+
+
+    def saque(self):
+        if not self.lista:
+            print('nao existe uma conta bancaria vc precisa criar uma')
+        else:
+            numero = int(input('digite o numero da conta'))
+            sacar = float(input('quantos R$ vc deseja sacar'))
+            for conta in self.lista:
+                if numero == conta.numero_da_conta:
+                    if sacar <= conta.saldo:
+                        print(f'sacando R${sacar} da conta')
+                        conta.saldo -= sacar
+                        print(f'R${sacar} sacados, agora vc tem R${conta.saldo} na conta')
+                        return
+                    else:
+                        print('Saldo insuficiente para sacar.')
+                        return
+                print('Conta não encontrada.')
+
+
+
+
+
+
+
+
+
+nome = str(input('digite o seu nome')).strip()
+saldo = float(input('digite o seu saldo bancario'))
+numero_da_conta = int(input('digite o numero da conta'))
+conta_bancaria1 = conta_bancaria(nome, saldo, numero_da_conta)
+
+
+
+pessoa1 = pessoa()
+pessoa1.adicionar_conta(conta_bancaria1)
+
+while True:
+    print('1 - Depositar dinheiro')
+    print('2 - Sacar dinheiro')
+    print('3 - Sair')
+
+    opção = int(input('Escolha uma opção: '))
+
+    if opção == 1:
+        pessoa1.deposito()
+    elif opção == 2:
+        pessoa1.saque()
+    elif opção == 3:
+        break
+    else:
+        print('Opção inválida.')
