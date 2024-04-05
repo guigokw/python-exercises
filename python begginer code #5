@@ -51,16 +51,23 @@ while True:
     print('1 - criar conta bancaria:')
     print('2 - depositar dinheiro:')
     print('3 - sacar dinheiro:')
-    print('4 - mostrar conta bancaria')
-    print('5 - sair do caixa eletronico')
-
-    opção = int(input('escolha uma dessas opções:'))
+    print('4 - mostrar conta bancaria:')
+    print('5 - sair do caixa eletronico:')
+    try:
+        opção = int(input('escolha uma dessas opções:'))
+    except ValueError:
+        print('insira um numero pra escolher as opções')
+        continue
 
     if opção == 1:
-        nome = str(input('digite seu nome:')).strip().lower()
-        idade = int(input('digite sua idade'))
-        saldo_bancario = float(input('digite o seu saldo bancario'))
-        numero = int(input('digite o numero da conta'))
+        try:
+            nome = str(input('digite seu nome:')).strip().lower()
+            idade = int(input('digite sua idade'))
+            saldo_bancario = float(input('digite o seu saldo bancario'))
+            numero = int(input('digite o numero da conta'))
+        except ValueError:
+            print('vc digitou algum valor errado por favor garanta-se de inseriri os valores corretos')
+            continue
 
         if idade < 18:
             print('nao é possivel criar uma conta com menos de 18 anos')
@@ -68,18 +75,31 @@ while True:
         criar_conta(conta_bancaria, nome, idade, saldo_bancario, numero)
 
     elif opção == 2:
-        numero = int(input('digite o numero da conta que deseja depositar'))
-        depositar = float(input('quanto vc deseja depositar na conta'))
+        try:
+            numero = int(input('digite o numero da conta que deseja depositar'))
+            depositar = float(input('quanto vc deseja depositar na conta'))
+        except ValueError:
+            print('erro nos valores inseridos, por favor insira um numero')
+            continue
+
         deposito(conta_bancaria, depositar)
 
 
     elif opção == 3:
-        numero = int(input('digite o numero da conta que deseja sacar'))
-        sacar = float(input('quanto vc deseja sacar?'))
+        try:
+            numero = int(input('digite o numero da conta que deseja sacar'))
+            sacar = float(input('quanto vc deseja sacar?'))
+        except ValueError:
+            print('erro nos valores inseridos, por favor insira um numero')
+            continue
         saque(conta_bancaria, sacar)
 
     elif opção == 4:
-        numero = int(input('digite o numero da conta que deseja visualizar'))
+        try:
+            numero = int(input('digite o numero da conta que deseja visualizar'))
+        except ValueError:
+            print('erro no valor insirido, por favor insira um numero')
+            continue
         mostrar_conta(conta_bancaria, numero)
 
     elif opção == 5:
@@ -89,3 +109,4 @@ while True:
 
     else:
         print('opção incorreta, digite novamente')
+
