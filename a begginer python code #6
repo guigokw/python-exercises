@@ -56,25 +56,33 @@ while True:
     print('3 - sair do cadastro')
 
     try:
-        opcao = int(input('Escolha uma dessas opções de cadastro: '))
+        opção = int(input('Escolha uma dessas opções de cadastro: '))
     except ValueError:
         print('Por favor, insira um número válido.')
         continue
 
 
     if opção == 1:
-        nome = input('insira seu nome de usuario').strip()
-        email = input('insira o seu email').strip()
-        senha = input('insira sua senha').strip()
+        try:
+            nome = input('insira seu nome de usuario').strip()
+            email = input('insira o seu email').strip()
+            senha = input('insira sua senha').strip()
+        except ValueError:
+            print('erro nos valores inseridos, por favor insira novamente')
+            continue
         resultado = cadastro(lista, nome, email, senha)
         if resultado:
             print(resultado)
 
 
     elif opção == 2:
-        nome = input('insira seu nome de usuario').strip()
-        email = input('insira o seu email').strip()
-        senha = input('insira sua senha').strip()
+        try:
+            nome = input('insira seu nome de usuario').strip()
+            email = input('insira o seu email').strip()
+            senha = input('insira sua senha').strip()
+        except ValueError:
+            print('erro nos valores inseridos, por favor insira novamente')
+            continue
         login(lista, nome, email, senha)
 
     elif opção == 3:
@@ -84,3 +92,4 @@ while True:
 
     else:
         print('opção incorreta, por favor insira a opção novamente')
+
