@@ -40,18 +40,18 @@ class xiaomi(celular):
     def usar_celular(self):
         self.bateria -= 13
         self.horas += 1
-        print(f'vc usou o iphone por {self.horas} horas')
+        print(f'vc usou o xiamoi por {self.horas} horas')
         if self.bateria <= 15:
             print('falta apenas 15 porcento de bateria, recomendado colocar carregar')
 
         if self.carregar and self.bateria <= 15:
            self.bateria += 73
            self.horas += 1
-           print('o seu iphone esta carregando....')
+           print('o seu xiaomi esta carregando....')
 
 
         if self.horas >= 12:
-            return 'vc usou o iphone o dia inteiro hora de dormir'
+            return 'vc usou o xiaomi o dia inteiro hora de dormir'
 
 
         if self.bateria <= 0:
