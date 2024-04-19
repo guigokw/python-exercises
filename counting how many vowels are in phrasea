@@ -1,0 +1,27 @@
+def contar_vogais(pergunta):
+    vogais = 0
+    for letra in pergunta:
+        if letra in 'aeiou':
+            vogais += 1
+    return f'Existem {vogais} vogais nesta frase.'
+
+while True:
+    print('1 - adicionar frase')
+    print('2 - sair do programa')
+
+    try:
+        opcao = int(input('Escolha uma das opções: '))
+    except ValueError:
+        print('Erro no valor inserido. Por favor, digite um número.')
+        continue
+
+    if opcao == 1:
+        pergunta = input('Insira uma frase: ').strip().lower()
+        print(contar_vogais(pergunta))
+
+    elif opcao == 2:
+        print('Saindo do programa...')
+        break
+
+    else:
+        print('Opção inválida. Por favor, escolha uma opção válida.')
