@@ -1,0 +1,94 @@
+def cadastro(lista, nome, email, senha):
+    for usuario in lista:
+        while usuario['nome'] == nome:
+            nome = input('Nome de usuário já existe. Por favor, escolha outro.')
+
+        while usuario['email'] == email:
+            email = input('Email já cadastrado. Por favor, use outro endereço de email.')
+
+    dados = {'nome': nome, 'email': email, 'senha': senha}
+    lista.append(dados)
+    return ' seja bem vindo ao goodgame empire'
+
+
+
+def login(lista, nome, email, senha):
+    if not lista:
+        print('nao existe um cadatro por favor, insira um')
+
+    for dado in lista:
+        while dado['email'] != email:
+            email = input('endereço de email incorreto, por favor insira insira novamente')
+        while dado['nome'] != nome:
+            nome = input('nome de incorreto, por favor insira novamente')
+        while dado['senha'] != senha:
+            senha = input('senha incorreta, por favor insira novamente')
+        while len(senha) < 4 or len(senha) > 16:
+            senha = input('numero de caracteres incorreto, por favor digite novamente')
+
+
+    return 'bem vindo ao goddgame empire'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+lista = []
+
+while True:
+    print('================================')
+    print('bem vindo ao goodgame empire')
+    print('================================')
+
+    print('1 - cadastrar conta')
+    print('2 - fazer login')
+    print('3 - sair do cadastro')
+
+    try:
+        opção = int(input('Escolha uma dessas opções de cadastro: '))
+    except ValueError:
+        print('Por favor, insira um número válido.')
+        continue
+
+
+    if opção == 1:
+        try:
+            nome = input('insira seu nome de usuario').strip()
+            email = input('insira o seu email').strip()
+            senha = input('insira sua senha').strip()
+        except ValueError:
+            print('erro nos valores inseridos, por favor insira novamente')
+            continue
+        resultado = cadastro(lista, nome, email, senha)
+        if resultado:
+            print(resultado)
+
+
+    elif opção == 2:
+        try:
+            nome = input('insira seu nome de usuario').strip()
+            email = input('insira o seu email').strip()
+            senha = input('insira sua senha').strip()
+        except ValueError:
+            print('erro nos valores inseridos, por favor insira novamente')
+            continue
+        login(lista, nome, email, senha)
+
+    elif opção == 3:
+        print('saindo do goodgame empire...')
+        break
+
+
+    else:
+        print('opção incorreta, por favor insira a opção novamente')
