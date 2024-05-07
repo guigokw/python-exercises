@@ -1,0 +1,66 @@
+class funcionarios:
+    def __init__(self, nome, cargo, salario):
+        self.nome = nome
+        self.cargo = cargo
+        self.salario = salario
+
+
+
+
+
+
+class empresa:
+    def __init__(self, nome):
+        self.nome = nome
+        self.lista = []
+
+
+    def adicionar_funcionarios(self, funcionarios):
+        self.lista.append(funcionarios)
+
+
+
+    def remover_funcionarios(self, nome):
+            removido = False
+            for funcionario in self.lista:
+                if funcionario.nome == nome:
+                    self.lista.remove(funcionario)
+                    print(f'{nome} removido com sucesso')
+                    removido = True
+                    break
+            if not removido:
+                print(f'{nome} nao encontrado no sistema')
+
+
+
+    def aumentar_salario(self,nome, porcentagem ):
+        encontrado = False
+        for funcionario in self.lista:
+            if funcionario.nome == nome:
+                aumento = funcionario.salario * porcentagem / 100
+                funcionario.salario += aumento
+                print(f'Salário de {funcionario.nome} aumentado para {funcionario.salario}')
+                encontrado = True
+                break
+        if not encontrado:
+            print(f'{nome} nao encontrado no sistema')
+    def mostrar_funcionarios(self):
+        print(f'funcionarios da empresa {self.nome}')
+        for funcionario in self.lista:
+            print(f'nome: {funcionario.nome} / cargo: {funcionario.cargo} / salario: {funcionario.salario}')
+
+
+
+
+
+
+funcionario1 = funcionarios('luiz guilherme', 'desenvolvedor de software', 6000)
+funcionario2 = funcionarios('pietro', 'designer', 4500)
+
+empresa1 = empresa('rockstar games')
+empresa1.adicionar_funcionarios(funcionario1)
+empresa1.adicionar_funcionarios(funcionario2)
+empresa1.mostrar_funcionarios()
+empresa1.remover_funcionarios('luiz guilherme')
+empresa1.aumentar_salario('pietro', 5)
+empresa1.mostrar_funcionarios()
