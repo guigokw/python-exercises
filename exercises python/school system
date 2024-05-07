@@ -1,0 +1,86 @@
+def adicionar_aluno(lista, nome, nota):
+    alunos = {'nome': nome, 'nota': nota}
+    lista.append(alunos)
+    print('aluno adicionado a lista')
+
+def remover_aluno(lista, nome):
+    if not lista:
+        print('vc nao tem uma lista de alunos por favor crie uma')
+    for aluno in lista:
+        if aluno['nome'] == nome:
+            lista.remove(aluno)
+            print('aluno removido')
+            return
+        print('nome do aluno nao encontrado')
+
+
+def mostrar_alunos(lista):
+    for aluno in lista:
+        print(aluno)
+
+def verificar_quem_passou(lista, passou, nao_passou):
+    for aluno in lista:
+        if aluno['nota'] < 7:
+            nao_passou.append(aluno)
+            print(f'alunos que nao passaram:')
+            print(nao_passou)
+        else:
+            passou.append(aluno)
+            print('alunos que passaram:')
+            print(passou)
+
+
+
+
+
+
+
+passou = []
+nao_passou = []
+
+lista = []
+
+while True:
+
+    print('1 - adicionar aluno')
+    print('2 - remover aluno')
+    print('3 - mostrar lista de alunos')
+    print('4 - verificar quem ja passou')
+    print('5 - sair do programa')
+
+    try:
+        opção = int(input('escolha uma dessas opções:'))
+    except ValueError:
+        print('vc precisa digitar um numero pra poder executar o programa')
+        continue
+
+    if opção == 1:
+        try:
+            nome = str(input('adicione o nome do aluno')).strip().lower()
+            nota = float(input('adicione a nota do aluno'))
+        except ValueError:
+            print('erro em algum dos valores digitados, por favor certifique se de colocar uma string em nome e um numero em nota')
+            continue
+        adicionar_aluno(lista, nome, nota)
+
+    elif opção == 2:
+        try:
+            nome = str(input('adicione o nome do aluno que deseja remover')).strip().lower()
+        except ValueError:
+            print('erro no valor inserido, por favor insira uma string')
+            continue
+        remover_aluno(lista, nome)
+
+    elif opção == 3:
+        mostrar_alunos(lista)
+
+    elif opção == 4:
+        verificar_quem_passou(lista, passou, nao_passou)
+
+
+    elif opção == 5:
+        print('saindo do programa.....')
+        break
+
+    else:
+        print('opção incorreta, por favor insira os numeros disponiveis')
