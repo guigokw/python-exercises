@@ -1,0 +1,37 @@
+class avião:
+    def __init__(self, total_assentos, assentos_ocupados, assentos_disponiveis):
+        self.total_assentos = total_assentos
+        self.assentos_ocupados = assentos_ocupados
+        self.assentos_disponiveis = assentos_disponiveis
+
+
+    def comprar_passagem(self):
+        if self.assentos_ocupados < 273:
+            print(f'existem {self.assentos_disponiveis} assentos disponiveis')
+        else:
+            print('todos os assentos estao ocupados')
+            return
+
+
+
+        comprar = int(input('quantas passagens vc deseja comprar?'))
+
+        total = self.assentos_ocupados + comprar
+        if total >= 273:
+            print(f'numero de passagens indisponivel')
+        else:
+            print(f'{comprar} passagens compradas')
+
+
+avião1 = avião(273, 272, 1)
+avião1.comprar_passagem()
+
+print('----------------------------------------------------------------')
+
+avião2 = avião(273, 244, 29)
+avião2.comprar_passagem()
+
+print('-----------------------------------------------------------------')
+
+avião3 = avião(273, 273, 0)
+avião3.comprar_passagem()
