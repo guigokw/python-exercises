@@ -13,19 +13,24 @@ class avião:
             return
 
 
+        try:
+            comprar = int(input('quantas passagens vc deseja comprar?'))
+        except ValueError:
+            print('erro no valor inserido, por favor insira um numero')
+            return
 
-        comprar = int(input('quantas passagens vc deseja comprar?'))
 
-        total = self.assentos_ocupados + comprar
-        if total >= 273:
+        if comprar > self.assentos_disponiveis:
             print(f'numero de passagens indisponivel')
         else:
+            self.assentos_ocupados += comprar
+            self.assentos_disponiveis -= comprar
             print(f'{comprar} passagens compradas')
 
 
-avião1 = avião(273, 272, 1)
+avião1 = avião(273, 270, 3)
 avião1.comprar_passagem()
-
+avião1.comprar_passagem()
 print('----------------------------------------------------------------')
 
 avião2 = avião(273, 244, 29)
