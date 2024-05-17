@@ -1,0 +1,133 @@
+class bomba_de_combustivel:
+    def __init__(self, tipo_combustivel, valor_litro, quantidade_combustivel):
+        self.tipo_combustivel = tipo_combustivel
+        self.valor_litro = valor_litro
+        self.quantidade_combustivel = quantidade_combustivel
+
+    def abastecer_por_valor(self):
+        print(f'o valor total do {self.tipo_combustivel} é de R$: {self.valor_litro}')
+        try:
+            colocar = float(input(f'qual valor o cliente deseja colocar de {self.tipo_combustivel}:'))
+        except ValueError:
+            print('erro no valor inserido, por favor insira um numero')
+        else:
+            print('valor inserido corretamente')
+
+
+        litros = colocar / self.valor_litro
+        if litros > self.quantidade_combustivel:
+            print('nao tem combustivel disponivel pro abastecimento')
+        else:
+            valor = colocar / self.valor_litro
+            self.quantidade_combustivel -= valor
+            print(f'com o pagamento de R$: {colocar}, foi abastecido {valor} litros')
+            print(f'ainda resta {self.quantidade_combustivel} litros de {self.tipo_combustivel}')
+
+
+    def abastecer_por_Litro(self):
+        print(f'o valor total do {self.tipo_combustivel} é de R$: {self.valor_litro}')
+        try:
+            colocar = int(input(f'quantos litros de {self.tipo_combustivel} o cliente deseja colccar'))
+        except ValueError:
+            print('erro no valor inserido, por favor insira um numero')
+        else:
+            print('valor inserido corretamente')
+            if colocar > self.quantidade_combustivel:
+                print(f'nao tem {self.tipo_combustivel} disponivel para o abastecimento')
+            else:
+                valor = colocar * self.valor_litro
+                self.quantidade_combustivel -= valor
+                print(f'com {colocar} litros de gasolina abastecidos, o valor total a se pagar é de R$: {valor}')
+                print(f'ainda restam {self.quantidade_combustivel} de {self.tipo_combustivel}')
+
+
+    def alterar_valor_combustivel(self):
+        alterar = float(input('digite o novo valor do combustivel'))
+        self.valor_litro = alterar
+
+    def alterar_tipo_combustivel(self):
+        print('1 - gasolina')
+        print('2 - diesel')
+        try:
+            alterar = int(input('qual combustivel o cliente deseja inserir'))
+        except ValueError:
+            print('erro no valor inserido, por favor insira um numero')
+        else:
+            print('valor inserido corretamente')
+            if alterar == 1:
+                self.tipo_combustivel = 'gasolina'
+                self.valor_litro = 5.99
+                self.quantidade_combustivel = self.quantidade_combustivel
+                print('alterado pra gasolina')
+            elif alterar == 2:
+                self.tipo_combustivel = 'diesel'
+                self.valor_litro = 5.60
+                self.quantidade_combustivel = self.quantidade_combustivel
+                print('alterado para diesel')
+            else:
+                print('opção invalida')
+
+    def alterar_quantidade_combustivel(self):
+        print('1 - gasolina')
+        print('2 - diesel')
+        try:
+            alterar = int(input('qual combustivel vc deseja alterar a quantidade'))
+        except ValueError:
+            print('erro no valor inserido, por favor insira um numero')
+        else:
+            print('valor inserido corretamente')
+
+            if alterar == 1:
+                colocar = int(input(f' ainda restam {self.quantidade_combustivel} de gasolina, quantos litros vc deseja colocar na bomba?'))
+                self.quantidade_combustivel += colocar
+                print(f'gasolina colocada, agora tem {self.quantidade_combustivel} na bomba')
+            elif alterar == 2:
+                colocar = int(input(f' ainda restam {self.quantidade_combustivel} de diesel, quantos litros vc deseja colocar na bomba?'))
+                self.quantidade_combustivel += colocar
+                print(f'gasolina colocada, agora tem {self.quantidade_combustivel} de diesel na bomba')
+            else:
+                print('opção invalida')
+
+
+
+
+
+
+bomba_de_combustivel1 = bomba_de_combustivel('gasolina', 5.99, 3000,)
+
+
+while True:
+    print('1 - abastecer por valor')
+    print('2 - abastecer por litro')
+    print('3 - alterar valor do litro de combustivel')
+    print('4 - alterar o tipo de combustivel')
+    print('5 - alterar quantidade de combustivel')
+    print('6 - sair do programa')
+
+    try:
+        opção = int(input('escolha uma dessas opções'))
+    except ValueError:
+        print('erro no valor inserido, porfavor digite um numero')
+        continue
+
+    if opção == 1:
+        bomba_de_combustivel1.abastecer_por_valor()
+
+    elif opção == 2:
+        bomba_de_combustivel1.abastecer_por_Litro()
+
+    elif opção == 3:
+        bomba_de_combustivel1.alterar_valor_combustivel()
+
+    elif opção == 4:
+        bomba_de_combustivel1.alterar_tipo_combustivel()
+
+    elif opção == 5:
+        bomba_de_combustivel1.alterar_quantidade_combustivel()
+
+    elif opção == 6:
+        print('saindo da bomba de combustivel')
+        break
+
+    else:
+        print('opção invalida')
