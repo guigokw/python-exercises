@@ -37,7 +37,7 @@ class bomba_de_combustivel:
             else:
                 valor = colocar * self.valor_litro
                 self.quantidade_combustivel -= valor
-                print(f'com {colocar} litros de gasolina abastecidos, o valor total a se pagar é de R$: {valor}')
+                print(f'com {colocar} litros de {self.tipo_combustivel} abastecidos, o valor total a se pagar é de R$: {valor}')
                 print(f'ainda restam {self.quantidade_combustivel} de {self.tipo_combustivel}')
 
 
