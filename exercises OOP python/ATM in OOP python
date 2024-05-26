@@ -1,0 +1,101 @@
+class conta_corrente:
+    def __init__(self, nome_correntista, numero_da_conta, saldo=0):
+        self.numero_da_conta = numero_da_conta
+        self.nome_correntista = nome_correntista
+        self.saldo = saldo
+
+
+
+    def alterar_nome_correntista(self):
+        try:
+            nome = str(input('digite o novo nome do correntista:')).strip().lower()
+        except ValueError:
+            print('erro no valor inserido por favor insira novamente')
+        else:
+            print('valor inserido corretamente')
+
+            self.nome_crrentista = nome
+
+
+    def deposito(self):
+        try:
+            numero = int(input('digite o numero da conta no qual deseja depositar'))
+        except ValueError:
+            print('erro no valor inserido, por favor insira novamente')
+        else:
+            print(f'seja bem vindo {self.nome_correntista}')
+
+            if self.numero_da_conta == numero:
+                try:
+                    depositar = float(input('quantos reais vc deseja depositar'))
+                except ValueError:
+                    print('erro no valor inserido, por favor insira novamente')
+                else:
+                    print('valor inserido corretamente')
+                    if depositar < 0:
+                        print('nao pode depositar um valor negativo')
+                    else:
+                        self.saldo += depositar
+                        print(f'R$:{depositar} depositados, agora vc tem R$:{self.saldo} na conta')
+            else:
+                print('nao existe registro desse numero de conta')
+
+
+    def saque(self):
+        try:
+            numero = int(input('digite o numero da conta no qual deseja sacar'))
+        except ValueError:
+            print('erro no valor inserido, por favor insira novamente')
+        else:
+            print(f'seja bem vindo {self.nome_correntista}')
+
+            if self.numero_da_conta == numero:
+                try:
+                    sacar = float(input('quantos reais vc deseja sacar'))
+                except ValueError:
+                    print('erro no valor inserido, por favor insira novamente')
+                else:
+                    print('valor inserido corretamente')
+
+                    if sacar > self.saldo:
+                        print('erro no saque, valor acima do que tem na conta atualmente')
+                    else:
+                        self.saldo -= sacar
+                        print(f'R$:{sacar} sacados, agora restam R$:{self.saldo} na conta')
+
+                    if sacar < 0:
+                        print('nao pode sacar um valor negativo')
+
+
+
+conta_corrente1 = conta_corrente('guilherme lopes ribeiro', 2117)
+
+while True:
+    print('1 - alterar o nome da conta')
+    print('2 - fazer deposito')
+    print('3 - fazer saque')
+    print('4 - sair do caixa eletronico')
+
+    try:
+        opção = int(input('digite a opção que deseja realizar'))
+    except ValueError:
+        print('erro no valor inserido, por favor insira um numero das opções')
+        continue
+
+
+
+    if opção == 1:
+        conta_corrente1.alterar_nome_correntista()
+
+    elif opção == 2:
+        conta_corrente1.deposito()
+
+    elif opção == 3:
+        conta_corrente1.saque()
+
+    elif opção == 4:
+        print('saindo do caixa eletronico.....')
+        break
+
+    else:
+        print('opção invalida')
