@@ -19,7 +19,7 @@ class conta_corrente:
 
     def deposito(self):
         try:
-            numero = int(input('digite o numero da conta no qual deseja depositar'))
+            numero = int(input('digite o numero da conta no qual deseja depositar:'))
         except ValueError:
             print('erro no valor inserido, por favor insira novamente')
         else:
@@ -27,7 +27,7 @@ class conta_corrente:
 
             if self.numero_da_conta == numero:
                 try:
-                    depositar = float(input('quantos reais vc deseja depositar'))
+                    depositar = float(input('quantos reais vc deseja depositar:'))
                 except ValueError:
                     print('erro no valor inserido, por favor insira novamente')
                 else:
@@ -43,7 +43,7 @@ class conta_corrente:
 
     def saque(self):
         try:
-            numero = int(input('digite o numero da conta no qual deseja sacar'))
+            numero = int(input('digite o numero da conta no qual deseja sacar:'))
         except ValueError:
             print('erro no valor inserido, por favor insira novamente')
         else:
@@ -51,7 +51,7 @@ class conta_corrente:
 
             if self.numero_da_conta == numero:
                 try:
-                    sacar = float(input('quantos reais vc deseja sacar'))
+                    sacar = float(input('quantos reais vc deseja sacar:'))
                 except ValueError:
                     print('erro no valor inserido, por favor insira novamente')
                 else:
@@ -77,7 +77,7 @@ while True:
     print('4 - sair do caixa eletronico')
 
     try:
-        opção = int(input('digite a opção que deseja realizar'))
+        opção = int(input('digite a opção que deseja realizar:'))
     except ValueError:
         print('erro no valor inserido, por favor insira um numero das opções')
         continue
